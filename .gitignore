@@ -1,0 +1,5 @@
+*.pyz
+__pychache__
+myvenv
+db.sq√lite3
+.DS_Store
