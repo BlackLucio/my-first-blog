@@ -32,9 +32,13 @@ def post_edit(request, pk):
         form = PostForm(request.POST, instance=post)
         if form.is_valid():
             post = form.save(commit=False)
-            post.author = request.user
+            post.componentes = request.user
             post.save()
             return redirect('post_detail', pk=post.pk)
     else:
         form = PostForm(instance=post)
     return render(request, 'blog/post_edit.html', {'form': form})
+
+def post_list_procesadores(request):
+    posts = Post.objects.all().filter(componentes="Procesadores")
+    return render(request, 'blog/procesadores.html', {'posts': posts})

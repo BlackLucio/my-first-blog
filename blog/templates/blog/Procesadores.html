@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<title></title>
+		</head>
+		<body>
+			{% block content %}
+        	{% for post in posts %}
+            <div class="post">
+            <h1><a href="{% url 'blog.views.post_detail' pk=post.pk %}" >{{ post.titulo }}</a></h1>
+                <p>{{ post.texto|linebreaksbr }}</p>
+                <br>
+                <div class="date">
+                	<p> Publicado el: {{ post.published_date }}</p>
+                	<p> Posteo sobre: {{ post.chismes_de }}</p>
+                </div>
+                
+            </div>
+            <br>
+   			{% empty %}
+    		<p>Aun no hay posts de profesores</p>
+        	{% endfor %}
+
+			{% endblock content %}
+		</body>	
+	</html>

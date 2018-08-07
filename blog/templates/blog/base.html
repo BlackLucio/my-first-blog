@@ -11,6 +11,15 @@
             <div class="page-header">
                 <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
                 <h1><a href="/">Django Girls Blog</a></h1>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+                    Posteos de... <span class="caret"></span></button>
+                    <ul class="dropdown-menu" role="menu">
+                    <!-- <li><a href="{% url 'blog.views.post_list_alumnos' %}">Alumnos</a></li> -->
+                    <li><a href="{% url 'blog.views.procesadores' %}">Procesadores</a></li>
+                    <!--<li><a href="{% url 'blog.views.post_list_otros' %}">Otros</a></li>-->
+                    </ul>
+                </div>
             </div>
 
             <div class="content container">
