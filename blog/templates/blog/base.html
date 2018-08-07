@@ -4,22 +4,26 @@
             <title>Django Girls blog</title>
             <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
             <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-            <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
             <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+            <link href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+            <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet"> 
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+            <link href="https://fonts.googleapis.com/css?family" rel="stylesheet"> 
+            <link href="https://fonts.googleapis.com/css?family=Spectral" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
         </head>
         <body>
             <div class="page-header">
                 <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
                 <h1><a href="/">Django Girls Blog</a></h1>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
-                    Posteos de... <span class="caret"></span></button>
-                    <ul class="dropdown-menu" role="menu">
-                    <!-- <li><a href="{% url 'blog.views.post_list_alumnos' %}">Alumnos</a></li> -->
-                    <li><a href="{% url 'blog.views.procesadores' %}">Procesadores</a></li>
-                    <!--<li><a href="{% url 'blog.views.post_list_otros' %}">Otros</a></li>-->
-                    </ul>
-                </div>
+        <div class="btn-group">
+      <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+      Posteos de... <span class="caret"></span></button>
+      <ul class="dropdown-menu" role="menu">
+        <li><a href="{% url 'blog.views.post_list_procesadores' %}">Procesadores</a></li>
+      </ul>
+</div>
             </div>
 
             <div class="content container">
