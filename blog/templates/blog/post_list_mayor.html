@@ -6,7 +6,6 @@
                 <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
                 <p>{{ post.text|linebreaksbr }}</p>
                 <p> <b>Precio:</b> {{ post.precio }} </p>
-                <a href="{{ post.archivo.url }}" target="_blank"><img  align="right" src="{{ post.archivo.url }}"></img></a>
             </div>
         {% endfor %}
     {% endblock %}

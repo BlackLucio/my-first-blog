@@ -5,8 +5,12 @@ from .models import Post
 
 
 def post_list(request):
-	posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
+	posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('precio')
 	return render(request, 'blog/post_list.html', {'posts':posts})
+
+def post_list_mayor(request):
+    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-precio')
+    return render(request, 'blog/post_list_mayor.html', {'posts':posts})    
 
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
@@ -32,7 +36,6 @@ def post_edit(request, pk):
         form = PostForm(request.POST, instance=post)
         if form.is_valid():
             post = form.save(commit=False)
-            post.componentes = request.user
             post.save()
             return redirect('post_detail', pk=post.pk)
     else:
@@ -40,5 +43,17 @@ def post_edit(request, pk):
     return render(request, 'blog/post_edit.html', {'form': form})
 
 def post_list_procesadores(request):
-    posts = Post.objects.all().filter(componentes="Procesadores")
+    posts = Post.objects.all().filter(componentes="Procesadores", published_date__lte=timezone.now()).order_by('-precio')
     return render(request, 'blog/procesadores.html', {'posts': posts})
+
+def post_list_procesadores_menor():
+    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-precio')
+    return render(request, 'blog/procesadores_menor.html', {'posts':posts})
+
+def post_list_placa_video(request):
+    posts = Post.objects.all().filter(componentes="Placa Video", published_date__lte=timezone.now()).order_by('precio')
+    return render(request, 'blog/placa_video.html', {'posts': posts})
+
+def post_list_otros(request):
+    posts = Post.objects.all().filter(componentes="Otros", published_date__lte=timezone.now()).order_by('precio')
+    return render(request, 'blog/otros.html', {'posts': posts})

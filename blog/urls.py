@@ -3,8 +3,12 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.post_list),
+    url(r'^post_list_mayor$', views.post_list_mayor),
     url(r'^post/(?P<pk>[0-9]+)/$', views.post_detail,  name='post_detail'),
     url(r'^post/new/$', views.post_new, name='post_new'),
     url(r'^post/(?P<pk>[0-9]+)/edit/$', views.post_edit, name='post_edit'),
     url(r'^privado/procesadores$', views.post_list_procesadores),
+    url(r'^privado/procesadores_menor$', views.post_list_procesadores_menor),
+    url(r'^privado/placa_video$', views.post_list_placa_video),
+    url(r'^privado/otros$', views.post_list_otros),
 ]
