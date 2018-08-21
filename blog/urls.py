@@ -7,8 +7,8 @@ urlpatterns = [
     url(r'^post/(?P<pk>[0-9]+)/$', views.post_detail,  name='post_detail'),
     url(r'^post/new/$', views.post_new, name='post_new'),
     url(r'^post/(?P<pk>[0-9]+)/edit/$', views.post_edit, name='post_edit'),
-    url(r'^privado/procesadores$', views.post_list_procesadores),
-    url(r'^privado/procesadores_menor$', views.post_list_procesadores_menor),
-    url(r'^privado/placa_video$', views.post_list_placa_video),
-    url(r'^privado/otros$', views.post_list_otros),
+    url(r'^procesadores$', views.post_list_procesadores),
+    url(r'^procesadores_menor$', views.post_list_procesadores_menor),
+    url(r'^placa_video$', views.post_list_placa_video),
+    url(r'^otros$', views.post_list_otros),
 ]

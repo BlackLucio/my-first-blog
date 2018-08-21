@@ -7,14 +7,13 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('blog', '0004_auto_20180814_0900'),
+        ('blog', '0003_auto_20180821_0849'),
     ]
 
     operations = [
-        migrations.AddField(
+        migrations.AlterField(
             model_name='post',
-            name='imagen',
-            field=models.ImageField(default=1, upload_to=b''),
-            preserve_default=False,
+            name='archivo',
+            field=models.FileField(blank=True, upload_to='documents/', null=True),
         ),
     ]

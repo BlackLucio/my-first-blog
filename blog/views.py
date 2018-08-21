@@ -57,3 +57,11 @@ def post_list_placa_video(request):
 def post_list_otros(request):
     posts = Post.objects.all().filter(componentes="Otros", published_date__lte=timezone.now()).order_by('precio')
     return render(request, 'blog/otros.html', {'posts': posts})
+
+def post_list_placa_video_menor():
+    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-precio')
+    return render(request, 'blog/placa_video_menor.html', {'posts':posts})
+
+def post_list_otros_menor(request):
+    posts = Post.objects.all().filter(componentes="Otros", published_date__lte=timezone.now()).order_by('-precio')
+    return render(request, 'blog/otros_menor.html', {'posts': posts})

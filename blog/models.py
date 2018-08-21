@@ -6,7 +6,7 @@ class Post(models.Model):
     title = models.CharField(max_length=200)
     text = models.TextField()
     precio = models.IntegerField()
-    archivo = models.FileField(upload_to='documents/')
+    archivo = models.FileField(upload_to='documents/', blank=True, null=True)
     componentes = models.CharField(
         max_length=20,
         choices=(('Procesadores','Procesadores'), ('Placa Video', 'Placa Video'), ('Otros', 'Otros')),

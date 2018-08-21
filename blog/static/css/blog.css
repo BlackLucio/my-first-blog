@@ -43,5 +43,15 @@
     }
 
     .post h1 a, .post h1 a:visited {
-        color: #000000;
+            margin: 100px 100px;    
+            background-color: rgba(0,0, 0, 0.5)
+    }
+
+    img{
+        width: 300px;
+        height: 250px;
+    }
+
+     {
+
     }
