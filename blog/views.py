@@ -12,8 +12,8 @@ def post_list_mayor(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-precio')
     return render(request, 'blog/post_list_mayor.html', {'posts':posts})    
 
-def post_detail(request, pk):
-    post = get_object_or_404(Post, pk=pk)
+def post_detail(request ):
+    post = get_object_or_404(Post)
     return render(request, 'blog/post_detail.html', {'post': post})
 
 
@@ -43,11 +43,11 @@ def post_edit(request, pk):
     return render(request, 'blog/post_edit.html', {'form': form})
 
 def post_list_procesadores(request):
-    posts = Post.objects.all().filter(componentes="Procesadores", published_date__lte=timezone.now()).order_by('-precio')
+    posts = Post.objects.all().filter(componentes="Procesadores", published_date__lte=timezone.now()).order_by('precio')
     return render(request, 'blog/procesadores.html', {'posts': posts})
 
-def post_list_procesadores_menor():
-    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-precio')
+def post_list_procesadores_menor(request):
+    posts = Post.objects.filter(componentes="Procesadores", published_date__lte=timezone.now()).order_by('-precio')
     return render(request, 'blog/procesadores_menor.html', {'posts':posts})
 
 def post_list_placa_video(request):
@@ -60,7 +60,7 @@ def post_list_otros(request):
 
 def post_list_placa_video_menor():
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-precio')
-    return render(request, 'blog/placa_video_menor.html', {'posts':posts})
+    return render(request, 'blog/placa_video_menor.html', {'posts': posts})
 
 def post_list_otros_menor(request):
     posts = Post.objects.all().filter(componentes="Otros", published_date__lte=timezone.now()).order_by('-precio')

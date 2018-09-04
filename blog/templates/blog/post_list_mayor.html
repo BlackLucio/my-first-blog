@@ -1,11 +1,61 @@
-    {% extends 'blog/base.html' %}
+ {% load staticfiles %}
+    <html>
+        <head>
+            <link rel="icon" href="https://image.flaticon.com/icons/png/512/73/73575.png" type="image/gif" sizes="16x16">
+            <title>COMPUMUNDO CHINO</title>
+            <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+            <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+            <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+            <link href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+            <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet"> 
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+            <link href="https://fonts.googleapis.com/css?family" rel="stylesheet"> 
+            <link href="https://fonts.googleapis.com/css?family=Spectral" rel="stylesheet"> 
+            <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+            <link rel="icon" href="https://carlosmoreno637.files.wordpress.com/2015/05/logo-pc.png" type="image/gif" sizes="16x16">
 
-    {% block content %}
-        {% for post in posts %}
-            <div class="post">
-                <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
-                <p>{{ post.text|linebreaksbr }}</p>
-                <p> <b>Precio:</b> {{ post.precio }} </p>
+        </head>
+        <body>
+            <div class="page-header">
+                <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+                <a></a>
+               <a href="{% url 'blog.views.post_list' %}"><h1><img src="https://carlosmoreno637.files.wordpress.com/2015/05/logo-pc.png" weight="100" height="100">Arma tu PC GAGYMER</img></h1></a>
+  
             </div>
-        {% endfor %}
-    {% endblock %}
+
+            <div class="content container">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-basic dropdown-toggle" data-toggle="dropdown">Componentes <span class="caret"></span></button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="{% url 'blog.views.post_list_procesadores' %}">Procesadores</a></li>
+                        <li><a href="{% url 'blog.views.post_list_placa_video' %}">Placa de video</a></li>
+                        <li><a href="{% url 'blog.views.post_list_otros' %}">Otros</a></li>
+                        <li><a href="{% url 'blog.views.post_list' %}">Todos</a></li>
+                    </ul>
+                    </div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-basic dropdown-toggle" data-toggle="dropdown">Ordenar por <span class="caret"></span></button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="{% url 'blog.views.post_list' %}">Menor precio</a></li>
+                        <li><a href="{% url 'blog.views.post_list_mayor' %}">Mayor precio</a></
+                    </ul>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-10">
+                        <div class="post">
+                            <div>
+                                <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+                                <p>{{ post.text|linebreaksbr }}</p>
+                                <p> <b>Precio:</b> $ {{ post.precio }} </p>
+                            </div>
+                            <a href="{{ post.archivo }}" target="_blank"><img  align="right" src="{{ post.archivo }}"></img></a>
+                        </div>   
+                    </div>
+                </div>
+            </div>
+
+        </body>
+    </html>
+

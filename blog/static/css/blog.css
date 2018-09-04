@@ -20,7 +20,7 @@
 
     .date {
         float: center;
-        color: #828282;
+        color: #0E1F0E;
     }
 
     .save {
@@ -38,18 +38,26 @@
         margin-right: 20px;
     }
 
-    .post {
-        margin-bottom: 70px;
+    .post { 
+        background-color: rgba(0,0,0, 0.3);
+        margin-bottom: 130px;
+    }
+
+    .post div {
+        /*float: left;*/
+        display: inline-block;
     }
 
     .post h1 a, .post h1 a:visited {
-            margin: 100px 100px;    
-            background-color: rgba(0,0, 0, 0.5)
+        margin: 100px 0;
+        
     }
 
-    img{
+    .post img{
+        float: left;
+        margin-right: 10px;
         width: 300px;
-        height: 250px;
+        height: 150px;
     }
 
      {
