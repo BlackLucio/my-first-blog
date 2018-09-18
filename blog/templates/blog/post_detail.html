@@ -12,8 +12,8 @@
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
             <link href="https://fonts.googleapis.com/css?family" rel="stylesheet"> 
             <link href="https://fonts.googleapis.com/css?family=Spectral" rel="stylesheet"> 
-<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
-<link rel="icon" href="https://carlosmoreno637.files.wordpress.com/2015/05/logo-pc.png" type="image/gif" sizes="16x16">
+            <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+            <link rel="icon" href="https://carlosmoreno637.files.wordpress.com/2015/05/logo-pc.png" type="image/gif" sizes="16x16">
 
         </head>
         <body>
@@ -26,7 +26,7 @@
 
             <div class="content container">
                 <div class="btn-group">
-                    <button type="button" class="btn btn-basic dropdown-toggle" data-toggle="dropdown">Componentes <span class="caret"></span></button>
+                    <button type="button" class="btn btn-basic dropdown-toggle" data-toggle="dropdown">Componentes<span class="caret"></span></button>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="{% url 'blog.views.post_list_procesadores' %}">Procesadores</a></li>
                         <li><a href="{% url 'blog.views.post_list_placa_video' %}">Placa de video</a></li>
@@ -35,13 +35,12 @@
                     </ul>
                     </div>
                 <div class="btn-group">
-                    <button type="button" class="btn btn-basic dropdown-toggle" data-toggle="dropdown">Ordenar por <span class="caret"></span></button>
+                    <button type="button" class="btn btn-basic dropdown-toggle" data-toggle="dropdown">Ordenar por<span class="caret"></span></button>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="{% url 'blog.views.post_list' %}">Menor precio</a></li>
                         <li><a href="{% url 'blog.views.post_list_mayor' %}">Mayor precio</a></
                     </ul>
                 </div>
-                
                 <div class="row">
                     <div class="col-md-10">
                         <div class="date">
@@ -58,5 +57,4 @@
 
         </body>
     </html> 
-
 

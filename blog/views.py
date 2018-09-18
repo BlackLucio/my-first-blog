@@ -3,19 +3,21 @@ from .forms import PostForm
 from django.utils import timezone
 from .models import Post
 
-
 def post_list(request):
-	posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('precio')
-	return render(request, 'blog/post_list.html', {'posts':posts})
+    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('precio')
+    return render(request, 'blog/post_list.html', {'posts': posts})
+
+#def post_list(request):
+#	posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('precio')
+#	return render(request, 'blog/post_list.html', {'posts':posts})
 
 def post_list_mayor(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-precio')
     return render(request, 'blog/post_list_mayor.html', {'posts':posts})    
 
-def post_detail(request ):
-    post = get_object_or_404(Post)
+def post_detail(request, pk):
+    post = get_object_or_404(Post, pk=pk)
     return render(request, 'blog/post_detail.html', {'post': post})
-
 
 def post_new(request):
     if request.method == "POST":
@@ -25,10 +27,11 @@ def post_new(request):
             post.author = request.user
             post.published_date = timezone.now()
             post.save()
-            return redirect('post_detail', pk=post.pk)
+            return redirect('listado')
     else:
         form = PostForm()
     return render(request, 'blog/post_edit.html', {'form': form})
+
 
 def post_edit(request, pk):
     post = get_object_or_404(Post, pk=pk)
@@ -36,11 +39,13 @@ def post_edit(request, pk):
         form = PostForm(request.POST, instance=post)
         if form.is_valid():
             post = form.save(commit=False)
+            post.author = request.user
             post.save()
-            return redirect('post_detail', pk=post.pk)
+            return redirect('listado')
     else:
         form = PostForm(instance=post)
     return render(request, 'blog/post_edit.html', {'form': form})
+
 
 def post_list_procesadores(request):
     posts = Post.objects.all().filter(componentes="Procesadores", published_date__lte=timezone.now()).order_by('precio')

@@ -1,16 +1,17 @@
 {% extends 'blog/base.html' %}
 
-			{% block content %}
-        	{% for post in posts %}
-            <div class="post">
+		{% block content %}
+        {% for post in posts %}
+        <div class="post">
             <h1><a href="{% url 'blog.views.post_detail' pk=post.pk %}" >{{ post.title }}</a></h1>
-                <p>{{ post.text|linebreaksbr }}</p>
-                <p> <b>Precio:</b> $ {{ post.precio }} </p>
-                <a href="{{ post.archivo.url }}" target="_blank"><img  align="right" src="{{ post.archivo.url }}"></img></a>
-            </div>
+            <p>{{ post.text|linebreaksbr }}</p>
             <br>
-   			{% empty %}
-    		<p>Aun no hay posts de Otros</p>
-        	{% endfor %}
+            <p> <b>Precio:</b> $ {{ post.precio }} </p>
+            <a href="{{ post.archivo.url }}" target="_blank"><img  align="right" src="{{ post.archivo.url }}"></img></a>
+        </div>
+        <br>
+   		{% empty %}
+    	<p>Aun no hay posts de Otros</p>
+        {% endfor %}
 
-			{% endblock content %}
+		{% endblock content %}
