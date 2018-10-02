@@ -24,7 +24,6 @@ def post_new(request):
         form = PostForm(request.POST)
         if form.is_valid():
             post = form.save(commit=False)
-            post.author = request.user
             post.published_date = timezone.now()
             post.save()
             return redirect('listado')
@@ -39,7 +38,6 @@ def post_edit(request, pk):
         form = PostForm(request.POST, instance=post)
         if form.is_valid():
             post = form.save(commit=False)
-            post.author = request.user
             post.save()
             return redirect('listado')
     else:
@@ -48,25 +46,25 @@ def post_edit(request, pk):
 
 
 def post_list_procesadores(request):
-    posts = Post.objects.all().filter(componentes="Procesadores", published_date__lte=timezone.now()).order_by('precio')
+    posts = Post.objects.all().filter(componentes="Procesadores", published_date__lte=timezone.now()).order_by('-precio')
     return render(request, 'blog/procesadores.html', {'posts': posts})
 
 def post_list_procesadores_menor(request):
-    posts = Post.objects.filter(componentes="Procesadores", published_date__lte=timezone.now()).order_by('-precio')
+    posts = Post.objects.filter(componentes="Procesadores", published_date__lte=timezone.now()).order_by('precio')
     return render(request, 'blog/procesadores_menor.html', {'posts':posts})
 
 def post_list_placa_video(request):
-    posts = Post.objects.all().filter(componentes="Placa Video", published_date__lte=timezone.now()).order_by('precio')
+    posts = Post.objects.all().filter(componentes="Placa Video", published_date__lte=timezone.now()).order_by('-precio')
     return render(request, 'blog/placa_video.html', {'posts': posts})
 
 def post_list_otros(request):
-    posts = Post.objects.all().filter(componentes="Otros", published_date__lte=timezone.now()).order_by('precio')
+    posts = Post.objects.all().filter(componentes="Otros", published_date__lte=timezone.now()).order_by('-precio')
     return render(request, 'blog/otros.html', {'posts': posts})
 
-def post_list_placa_video_menor():
-    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-precio')
+def post_list_placa_video_menor(request):
+    posts = Post.objects.all().filter(componentes="Placa Video", published_date__lte=timezone.now()).order_by('precio')
     return render(request, 'blog/placa_video_menor.html', {'posts': posts})
 
 def post_list_otros_menor(request):
-    posts = Post.objects.all().filter(componentes="Otros", published_date__lte=timezone.now()).order_by('-precio')
+    posts = Post.objects.all().filter(componentes="Otros", published_date__lte=timezone.now()).order_by('precio')
     return render(request, 'blog/otros_menor.html', {'posts': posts})

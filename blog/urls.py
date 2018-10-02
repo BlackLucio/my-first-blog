@@ -12,4 +12,5 @@ urlpatterns = [
     url(r'^placa_video$', views.post_list_placa_video),
     url(r'^placa_video_menor$', views.post_list_placa_video_menor),
     url(r'^otros$', views.post_list_otros),
+    url(r'^otros_menor$', views.post_list_otros_menor),
 ]
